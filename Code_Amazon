@@ -6,8 +6,6 @@ Enums, data types, and constants: Here are the required enums, data types, and c
 
 Java
 
-Python
-
 
 public class Address {
   private String streetAddress;
