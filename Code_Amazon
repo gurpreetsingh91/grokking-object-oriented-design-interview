@@ -157,3 +157,56 @@ public class Order {
 
 
 ==========================================
+
+Shipment, ShipmentLog, and Notification: After successfully placing an order, a shipment record will be created:
+
+
+public class ShipmentLog {
+  private String shipmentNumber;
+  private ShipmentStatus status;
+  private Date creationDate;
+}
+
+public class Shipment {
+  private String shipmentNumber;
+  private Date shipmentDate;
+  private Date estimatedArrival;
+  private String shipmentMethod;
+  private List<ShipmentLog> shipmentLogs;
+
+  public boolean addShipmentLog(ShipmentLog shipmentLog);
+}
+
+public abstract class Notification {
+  private int notificationId;
+  private Date createdOn;
+  private String content;
+
+  public boolean sendNotification(Account account);
+}
+
+
+==========================================
+
+
+public interface Search {
+  public List<Product> searchProductsByName(String name);
+  public List<Product> searchProductsByCategory(String category);
+}
+
+public class Catalog implements Search {
+   HashMap<String, List<Product>> productNames;
+   HashMap<String, List<Product>> productCategories;
+
+  public List<Product> searchProductsByName(String name) {
+    return productNames.get(name);
+  }
+
+  public List<Product> searchProductsByCategory(String category) {
+    return productCategories.get(category);
+  }
+}
+
+
+
+
